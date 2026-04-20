@@ -11,8 +11,26 @@
   margin: 0;
   padding: 0;
 }
+.whatsapp-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-top: 15px;
+  border: none;
+  cursor: pointer;
 
+  background: linear-gradient(45deg, #25D366, #128C7E);
+  color: white;
+  font-weight: bold;
 
+  transition: 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
 body {
   font-family: Arial, sans-serif;
   color: white;
@@ -25,6 +43,7 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
+
 
 main {
   max-width: 900px;
@@ -217,11 +236,11 @@ input {
 	<section>
 	 <nav>
 	 <ul>
-	 <li><a href="#home">Home</a></li>
-	 <li><a href="#menu">Menu</a></li>
-	 <li><a href="#order">Order</a></li>
-	 <li><a href="#contact">Contact</a></li>
-	 </ul>
+	  <li><a href="#home">Home</a></li>
+	   <li><a href="#menu">Menu</a></li>
+	   <li><a href="#order">Order</a></li>
+	   <li><a href="#contact">Contact</a></li>
+	   </ul>
 	 </nav>
 	</section>
 	</header>
@@ -382,7 +401,67 @@ function updateCart() {
 
   document.getElementById("cart-total").textContent = cartTotal;
 }
+function sendToWhatsApp() {
 
+  const names = {
+	burger: "Classic Cheeseburger",
+	chicken: "Crispy Chicken Burger",
+	pizza: "Pepperoni Pizza",
+	bbq: "BBQ Chicken Pizza",
+	coke: "Coke",
+	juice: "Orange Juice"
+  };
+
+  let message = "*NEW ORDER - STREETBITES* \n\n";
+
+  let total = 0;
+  let hasItem = false;
+
+  for (let item in prices) {
+	let qty = parseInt(document.getElementById(item + "-qty").value);
+
+	if (qty > 0) {
+	  hasItem = true;
+
+	  let itemTotal = qty * prices[item];
+	  total += itemTotal;
+
+	  message += "• " + names[item] + " x" + qty + " = ₦" + itemTotal + "\n";
+	}
+  }
+
+  if (!hasItem) {
+	alert("Please select your food");
+	return;
+  }
+
+  message += "\n💰 *Food Total:* ₦" + total + "\n";
+  let name = document.getElementById("full-name").value;
+  let phoneInput = document.getElementById("number").value;
+  let location = document.getElementById("location").value;
+
+  let delivery = document.querySelector('input[name="delivery"]:checked');
+  let deliveryText = delivery ? delivery.value : "Not selected";
+
+  if (!name || !phoneInput || !location) {
+	alert("Please fill in your details");
+	return;
+  }
+
+  message += "\n👤 *Customer Details*\n";
+  message += "Name: " + name + "\n";
+  message += "Phone: " + phoneInput + "\n";
+  message += "Location: " + location + "\n";
+  message += "Delivery: " + deliveryText + "\n";
+
+  message += "\n🙏 Thank you!";
+
+  let phone = "2348086165187";
+
+  let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
+  window.location.href = url;
+}
 </script>
  </section>
 
@@ -445,7 +524,10 @@ function updateCart() {
 	  <label for="delivery">Home delivery</label>
 	 <input id="home-delivery" type="radio" name="delivery" value="home-delivery" />
 	</fieldset>
-	<button type="checkout">Checkout</button>
+	<button type="button" onclick="sendToWhatsApp()" class="whatsapp-btn">
+  Checkout on WhatsApp
+</button>
+
 	 </section>
 	 <h2>Customers reviews</h2>
 	 <hr>
