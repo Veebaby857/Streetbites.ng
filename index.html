@@ -1,1 +1,311 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="description" content="my food with a resturant vibe">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>My Food</title>
+	<style>
+ body {
+  font-family: Arial, sans-serif;
+  background-color: #0f172a;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+text-align: center;
+}
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
 
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+
+a {
+  color: #38bdf8; /* soft blue */
+  text-decoration: none;
+  margin: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+.menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+
+.food-card {
+  background: #1e293b;
+  border-radius: 15px;
+  padding: 15px;
+  margin: 15px 0;
+  text-align: center;
+}
+
+
+.food-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+
+.price {
+  color: #22c55e; /* green */
+  font-weight: bold;
+}
+
+
+button {
+  background: #38bdf8;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #0ea5e9;
+}
+
+
+form {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 30px;
+}
+
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+
+.review {
+  background: #1e293b;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
+} 
+	</style>
+	</head>
+	<body>
+	 <h1>Streetbites</h1>
+	 <p>Fast, hot, and delivered to your door.</p>
+	<section>
+	 <nav>
+	 <ul>
+	 <li><a href="#home">Home</a></li>
+	 <li><a href="#menu">Menu</a></li>
+	 <li><a href="#order">Order</a></li>
+	 <li><a href="#contact">Contact</a></li>
+	 </ul>
+	 </nav>
+	</section>
+	<section id="home">
+	<img src="hero.JPG" alt="Tray with burger, pizza slice and drink">
+	<p>Your favorite street food, just one click away.</p>
+	</section>
+	<section id="menu">
+	<h2>Our menu</h2>
+	
+	<div class="menu">
+	
+	<div class="food-card">
+  <img src="cheeseburger.JPG" alt="classic cheeseburger">
+  <h3> Classic Cheeseburger</h3>
+  <p>Grilled beef patty, melted cheddar, lettuce, tomato, and our house sauce.</p>
+  <p class="price">₦3000</p>
+  <p>Total: ₦<span id="burger-total">0</span></p> 
+  <label for="burger-qty">Quantity:</label>
+  <input type="number" id="burger-qty" name="cheese-burger" min="0" max="10" value="0">
+  <button>Add to Cart</button>
+  </div>
+  <div class="food-card">
+  <img src="chickenburger.JPG" alt="crispy chicken burger">
+  <h3> Crispy Chicken burger</h3>
+  <p>Crispy chicken fillet, mayo, pickles, and fresh slaw on a toasted bun.</p>
+  <p class="price">₦4000</p>
+  <p>Total: ₦<span id="burger-total">0</span></p> 
+  <label for="burger-qty">Quantity:</label>
+  <input type="number" id="burger-qty" name="chicken-burger" min="0" max="10" value="0">
+  <button>Add to Cart</button>
+  </div>
+  
+  <div class="food-card">
+  <img src="pizza.JPG" alt="pepporoni pizza slice">
+  <h3>Pepperoni Pizza</h3>
+  <p>Loaded with spicy pepperoni, mozzarella, and rich tomato sauce.</p>
+  <p class="price">₦5000</p>
+  <p>Total: ₦<span id="pizza-total">0</span></p> 
+  <label for="pizza-qty">Quantity:</label>
+  <input type="number" id="pizza-qty" name="pepperoni-pizza" min="0" max="10" value="0">
+  <button>Add to Cart</button>
+  </div>
+  
+  <div class="food-card">
+  <img src="bbqpizza.JPG" alt="bbq chicken pizza">
+  <h3>BBQ Chicken Pizza</h3>
+  <p>Smoky BBQ sauce, grilled chicken, rea onions, and mozzarella.</p>
+  <p class="price">₦6000</p>
+  <p>Total: ₦<span id="bbq-total">0</span></p> 
+  <label for="bbq-qty">Quantity:</label>
+  <input type="number" id="bbq-qty" name="bbq-pizza" min="0" max="10" value="0">
+  <button>Add to Cart</button>
+  </div>
+  
+  <div class="food-card">
+  <img src="coke.JPG" alt="glass of coke with ice">
+  <h3>Coke</h3>
+  <p>Ice cold, served fresh. The perfect match for any meal.</p>
+  <p class="price">₦800</p>
+  <p>Total: ₦<span id="coke-total">0</span></p> 
+  <label for="coke-qty">Quantity:</label>
+  <input type="number" id="coke-qty" name="coke" min="0" max="10" value="0">
+  <button>Add to Cart</button>
+  </div>
+  
+	
+  <div class="food-card">
+  <img src="juice.JPG" alt="glass of orange juice">
+  <h3>Orange Juice</h3>
+  <p>Freshly squeezed orange.No added sugar.</p>
+  <p class="price">₦1500</p>
+  <p>Total: ₦<span id="juice-total">0</span></p> 
+  <label for="juice-qty">Quantity:</label>
+  <input type="number" id="juice-qty" name="juice" min="0" max="10" value="0">
+  <button>Add to Cart</button>
+  </div>
+ </div>
+ <script>
+  // prices of items
+  const prices = {
+	burger: 4000,
+	pizza: 5000,
+	drink: 1000
+  };
+
+  // store quantities
+  const quantities = {
+	burger: 0,
+	pizza: 0,
+	drink: 0
+  };
+
+  function increase(item) {
+	quantities[item]++;
+
+	document.getElementById(item + "-qty").textContent = quantities[item];
+
+	document.getElementById(item + "-total").textContent =
+	  quantities[item] * prices[item];
+  }
+
+  function decrease(item) {
+	if (quantities[item] > 0) {
+	  quantities[item]--;
+
+	  document.getElementById(item + "-qty").textContent = quantities[item];
+
+	  document.getElementById(item + "-total").textContent =
+		quantities[item] * prices[item];
+	}
+  }
+</script>
+ </section>
+
+ 
+	 <section id="order">
+	 <h2>Order Now</h2>
+	<label for="full-name">Enter your full name</label>
+	<input type="text" id="full-name" name="name" placeholder="e.g., John Doe" required size="20">
+	<label for="phone-number">Enter your phone number</label>
+	<input type="number" id="number" name="phone-number" placeholder="e.g.,080300675897" required size="20">
+  	<label for="location">Enter your location</label>
+	<input type="text" id="location" name="location" placeholder="e.g.,Presco junction,presco" required size="20">
+	 <fieldset>
+	 <legend>Select Food</legend>
+	<label for="cheese-burger">Classic Cheeseburger</label>
+	<input type="checkbox" id="cheese-burger" name="choice" value="cheese-burger" />
+		 
+	<label for="crispy-chickenburger">Crispy Chicken burger</label>
+	 <input
+			type="checkbox"
+			id="crispy-chickenburger"
+			name="choice"
+			value="crispy-chickenburger"
+		  />
+		
+	 <label for="pepperoni-pizza">Pepperoni Pizza</label>
+	 <input type="checkbox" id="pepperoni-pizza" name="choice" value="pepperoni-pizza" />
+	<label for="bbq-pizza">BBQ Chicken Pizza</label>
+	<input type="checkbox" id="bbq-pizza" name="choice" value="bbq-pizza" />
+		 
+	<label for="coke">Coke</label>
+	 <input
+			type="checkbox"
+			id="coke"
+			name="choice"
+			value="coke"
+		  />
+		
+	 <label for="juice">Orange Juice</label>
+	 <input type="checkbox" id="juice" name="choice" value="juice" />
+	 </fieldset>
+	 <fieldset>
+	 <legend>Extras</legend>
+	 <label for="cheese">Extra cheese</label>
+	 <input
+			type="checkbox"
+			id="cheese"
+			name="choice"
+			value="cheese"
+		  />
+		
+	 <label for="sauce">Extra sauce</label>
+	 <input type="checkbox" id="sauce" name="choice" value="sauce" />
+	  </fieldset>
+	  <fieldset>
+	  <legend>Delivery Option</legend>
+	  <label for="pickup">Pickup</label>
+	  <input id="pickup" type="radio" name="delivery" value="pickup" />
+		
+	  <label for="delivery">Home delivery</label>
+	 <input id="home-delivery" type="radio" name="delivery" value="home-delivery" />
+	</fieldset>
+	<button type="submit">Submit</button>
+	 </section>
+	 <h2>Customers reviews</h2>
+	 <hr>
+	 <p>⭐️⭐️⭐️⭐️⭐️"Best burger l've ever had!
+Arrived hot and fresh." — Tunde A.</p>
+	 <p>⭐️⭐️⭐️⭐️⭐️"Fast delivery, hot food
+StreetBites never misses." - Amaka J.</p>
+	 <p>⭐️⭐️⭐️⭐️⭐️"The BBQ chicken pizza is my
+new obsession." — Kemi L.</p>
+	 
+	 <section id="contact">
+	  <h2>Contact us 📍</h2>
+	  <hr>
+	   <p>Address: 12 Marina Road, Port Harcourt, Rivers State</p>
+	   <p>phone: +234 800 123 4567</p>
+	   <p>Email: hello@streetbites.ng</p>
+	 </section>
+	</body>
+</html>
