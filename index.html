@@ -5,16 +5,27 @@
 	  <meta name="description" content="my food with a resturant vibe">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>My Food</title>
-	<style>
- body {
-  font-family: Arial, sans-serif;
-  background-color: #0f172a;
-  color: white;
+		<style>
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-text-align: center;
+
+
+body {
+  font-family: Arial, sans-serif;
+  color: white;
+
+  background:
+	linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)),
+	url("https://images.unsplash.com/photo-1713330801172-03f8d1c0dde7?q=80&w=987");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
+
 main {
   max-width: 900px;
   margin: auto;
@@ -22,90 +33,186 @@ main {
 }
 
 
-header {
+h1, p {
   text-align: center;
-  padding: 20px;
 }
 
 
-a {
-  color: #38bdf8; /* soft blue */
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 10px;
+}
+
+nav a {
+  color: #ffffff;
   text-decoration: none;
-  margin: 10px;
+  font-weight: bold;
 }
 
-a:hover {
-  text-decoration: underline;
+nav a:hover {
+  color: #ff4d4d;
 }
+
+
+section {
+  background: rgba(0,0,0,0.6);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 20px;
+}
+
+
 .menu {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 20px;
 }
 
 
 .food-card {
-  background: #1e293b;
-  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
   padding: 15px;
-  margin: 15px 0;
   text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+  transition: 0.3s ease;
+}
+
+.food-card:hover {
+  transform: translateY(-5px) scale(1.02);
 }
 
 
 .food-card img {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 
 .price {
-  color: #22c55e; /* green */
+  color: #22c55e;
   font-weight: bold;
 }
 
 
 button {
-  background: #38bdf8;
-  color: black;
+  background: linear-gradient(45deg, #ff4d4d, #ff0000);
+  color: white;
   border: none;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   margin-top: 10px;
 }
 
 button:hover {
-  background: #0ea5e9;
+  opacity: 0.8;
 }
 
-
-form {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 15px;
-  margin-top: 30px;
+/* FORM CONTAINER (center + app feel) */
+#order {
+  max-width: 500px;
+  margin: 40px auto;
+  background: rgba(0,0,0,0.75);
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
 }
 
+/* FORM TITLE */
+#order h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-input, select {
+/* INPUT FIELDS */
+#order input[type="text"],
+#order input[type="number"] {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border-radius: 12px;
   border: none;
+  margin-bottom: 15px;
+  background: rgba(255,255,255,0.1);
+  color: white;
 }
 
+#order input::placeholder {
+  color: #ccc;
+}
 
-.review {
-  background: #1e293b;
-  padding: 10px;
-  border-radius: 10px;
-  margin: 10px 0;
-} 
+fieldset {
+  border: none;
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+legend {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ff4d4d;
+}
+
+fieldset label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+fieldset input[type="checkbox"],
+fieldset input[type="radio"] {
+  transform: scale(1.2);
+}
+
+input {
+  accent-color: #ff4d4d;
+}
+
+#order button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-top: 10px;
+
+  background: linear-gradient(45deg, #ff4d4d, #ff0000);
+}
+
+#order button:hover {
+  transform: scale(1.02);
+}
+#order {
+  animation: fadeUp 0.8s ease;
+}
+
+@keyframes fadeUp {
+  from {
+	opacity: 0;
+	transform: translateY(20px);
+  }
+  to {
+	opacity: 1;
+	transform: translateY(0);
+  }
+}
+@media (max-width: 600px) {
+  .menu {
+	grid-template-columns: 1fr;
+  }
+}
 	</style>
 	</head>
 	<body>
+	  <header>
+	  <div align="center">
 	 <h1>Streetbites</h1>
 	 <p>Fast, hot, and delivered to your door.</p>
 	<section>
@@ -118,8 +225,12 @@ input, select {
 	 </ul>
 	 </nav>
 	</section>
+	</header>
+	<div class="cart-bar">
+  🛒 Total: ₦<span id="cart-total">0</span>
+</div>
 	<section id="home">
-	<img src="hero.JPG" alt="Tray with burger, pizza slice and drink">
+	<img alt="Tray with burger, pizza slice and drink">
 	<p>Your favorite street food, just one click away.</p>
 	</section>
 	<section id="menu">
@@ -128,105 +239,151 @@ input, select {
 	<div class="menu">
 	
 	<div class="food-card">
-  <img src="cheeseburger.JPG" alt="classic cheeseburger">
+  <img alt="classic cheeseburger">
   <h3> Classic Cheeseburger</h3>
   <p>Grilled beef patty, melted cheddar, lettuce, tomato, and our house sauce.</p>
   <p class="price">₦3000</p>
-  <p>Total: ₦<span id="burger-total">0</span></p> 
-  <label for="burger-qty">Quantity:</label>
-  <input type="number" id="burger-qty" name="cheese-burger" min="0" max="10" value="0">
+<p>Total: ₦<span id="burger-total">0</span></p>
+
+  <div class="controls">
+	<button onclick="decrease('burger')">-</button>
+	<input id="burger-qty" value="0" readonly>
+	<button onclick="increase('burger')">+</button>
+  </div>
   <button>Add to Cart</button>
   </div>
   <div class="food-card">
-  <img src="chickenburger.JPG" alt="crispy chicken burger">
+  <img alt="crispy chicken burger">
   <h3> Crispy Chicken burger</h3>
   <p>Crispy chicken fillet, mayo, pickles, and fresh slaw on a toasted bun.</p>
   <p class="price">₦4000</p>
-  <p>Total: ₦<span id="burger-total">0</span></p> 
-  <label for="burger-qty">Quantity:</label>
-  <input type="number" id="burger-qty" name="chicken-burger" min="0" max="10" value="0">
+  <p>Total: ₦<span id="chicken-total">0</span></p>
+
+  <div class="controls">
+  <button onclick="decrease('chicken')">-</button>
+	<input id="chicken-qty" value="0" readonly>
+	<button onclick="increase('chicken')">+</button>
+  </div>
   <button>Add to Cart</button>
   </div>
   
   <div class="food-card">
-  <img src="pizza.JPG" alt="pepporoni pizza slice">
+  <img alt="pepporoni pizza slice">
   <h3>Pepperoni Pizza</h3>
   <p>Loaded with spicy pepperoni, mozzarella, and rich tomato sauce.</p>
   <p class="price">₦5000</p>
-  <p>Total: ₦<span id="pizza-total">0</span></p> 
-  <label for="pizza-qty">Quantity:</label>
-  <input type="number" id="pizza-qty" name="pepperoni-pizza" min="0" max="10" value="0">
+  <p>Total: ₦<span id="pizza-total">0</span></p>
+
+  <div class="controls">
+	<button onclick="decrease('pizza')">-</button>
+	<input id="pizza-qty" value="0" readonly>
+	<button onclick="increase('pizza')">+</button>
+  </div>
   <button>Add to Cart</button>
   </div>
   
   <div class="food-card">
-  <img src="bbqpizza.JPG" alt="bbq chicken pizza">
+  <img alt="bbq chicken pizza">
   <h3>BBQ Chicken Pizza</h3>
   <p>Smoky BBQ sauce, grilled chicken, rea onions, and mozzarella.</p>
   <p class="price">₦6000</p>
-  <p>Total: ₦<span id="bbq-total">0</span></p> 
-  <label for="bbq-qty">Quantity:</label>
-  <input type="number" id="bbq-qty" name="bbq-pizza" min="0" max="10" value="0">
+  <p>Total: ₦<span id="bbq-total">0</span></p>
+
+  <div class="controls">
+	<button onclick="decrease('bbq')">-</button>
+	<input id="bbq-qty" value="0" readonly>
+	<button onclick="increase('bbq')">+</button>
+  </div>
   <button>Add to Cart</button>
   </div>
   
   <div class="food-card">
-  <img src="coke.JPG" alt="glass of coke with ice">
+  <img alt="glass of coke with ice">
   <h3>Coke</h3>
   <p>Ice cold, served fresh. The perfect match for any meal.</p>
   <p class="price">₦800</p>
-  <p>Total: ₦<span id="coke-total">0</span></p> 
-  <label for="coke-qty">Quantity:</label>
-  <input type="number" id="coke-qty" name="coke" min="0" max="10" value="0">
+   <p>Total: ₦<span id="coke-total">0</span></p>
+
+  <div class="controls">
+	<button onclick="decrease('coke')">-</button>
+	<input id="coke-qty" value="0" readonly>
+	<button onclick="increase('coke')">+</button>
+  </div>
   <button>Add to Cart</button>
   </div>
   
 	
   <div class="food-card">
-  <img src="juice.JPG" alt="glass of orange juice">
+  <img alt="glass of orange juice">
   <h3>Orange Juice</h3>
   <p>Freshly squeezed orange.No added sugar.</p>
   <p class="price">₦1500</p>
-  <p>Total: ₦<span id="juice-total">0</span></p> 
-  <label for="juice-qty">Quantity:</label>
-  <input type="number" id="juice-qty" name="juice" min="0" max="10" value="0">
+  <p>Total: ₦<span id="juice-total">0</span></p>
+
+  <div class="controls">
+	<button onclick="decrease('juice')">-</button>
+	<input id="juice-qty" value="0" readonly>
+	<button onclick="increase('juice')">+</button>
+  </div>
   <button>Add to Cart</button>
   </div>
  </div>
- <script>
-  // prices of items
-  const prices = {
-	burger: 4000,
-	pizza: 5000,
-	drink: 1000
-  };
+<script>
 
-  // store quantities
-  const quantities = {
-	burger: 0,
-	pizza: 0,
-	drink: 0
-  };
+const prices = {
+  burger: 3000,
+  chicken: 4000,
+  pizza: 5000,
+  bbq: 6000,
+  coke: 800,
+  juice: 1500
+};
 
-  function increase(item) {
-	quantities[item]++;
+let cartTotal = 0;
 
-	document.getElementById(item + "-qty").textContent = quantities[item];
+function increase(item) {
+  let qty = document.getElementById(item + "-qty");
+  let total = document.getElementById(item + "-total");
 
-	document.getElementById(item + "-total").textContent =
-	  quantities[item] * prices[item];
+  let value = parseInt(qty.value);
+  value++;
+
+  qty.value = value;
+
+  let itemTotal = value * prices[item];
+  total.textContent = itemTotal;
+
+  updateCart();
+}
+
+function decrease(item) {
+  let qty = document.getElementById(item + "-qty");
+  let total = document.getElementById(item + "-total");
+
+  let value = parseInt(qty.value);
+
+  if (value > 0) {
+	value--;
+	qty.value = value;
+
+	let itemTotal = value * prices[item];
+	total.textContent = itemTotal;
+
+	updateCart();
+  }
+}
+
+function updateCart() {
+  cartTotal = 0;
+
+  for (let item in prices) {
+	let qty = document.getElementById(item + "-qty").value;
+	cartTotal += qty * prices[item];
   }
 
-  function decrease(item) {
-	if (quantities[item] > 0) {
-	  quantities[item]--;
+  document.getElementById("cart-total").textContent = cartTotal;
+}
 
-	  document.getElementById(item + "-qty").textContent = quantities[item];
-
-	  document.getElementById(item + "-total").textContent =
-		quantities[item] * prices[item];
-	}
-  }
 </script>
  </section>
 
@@ -289,7 +446,7 @@ input, select {
 	  <label for="delivery">Home delivery</label>
 	 <input id="home-delivery" type="radio" name="delivery" value="home-delivery" />
 	</fieldset>
-	<button type="submit">Submit</button>
+	<button type="checkout">Checkout</button>
 	 </section>
 	 <h2>Customers reviews</h2>
 	 <hr>
@@ -307,5 +464,6 @@ new obsession." — Kemi L.</p>
 	   <p>phone: +234 800 123 4567</p>
 	   <p>Email: hello@streetbites.ng</p>
 	 </section>
+	 </div>
 	</body>
 </html>
